@@ -1,22 +1,24 @@
 package com.bbc.news.comment.steps;
 
-import cucumber.api.PendingException;
-import cucumber.api.java.en.And;
-import cucumber.api.java.en.Given;
+import com.bbc.news.runner.BaseStepDef;
+import env.BrowserFactory;
+import org.openqa.selenium.WebDriver;
 
 /**
  * Created by oleh on 07/12/17.
  */
-public class CommentStepDef {
+public class CommentStepDef extends BaseStepDef {
 
-    @Given("^I am audience member$")
-    public void iAmAudienceMember() {
-        // Write code here that turns the phrase above into concrete actions
-        throw new PendingException();
-    }
+    public CommentStepDef() {
 
-    @And("^I navigate to: '(.*)'$")
-    public void iNavigateTo(String url) {
-        throw new PendingException();
+        Given("^I am audience member$", () -> {
+            WebDriver driver = BrowserFactory.driver();
+        });
+
+        And("^I navigate to: '(.*)'$", (String url) -> {
+            BrowserFactory.driver().navigate().to(url);
+        });
+
+
     }
 }

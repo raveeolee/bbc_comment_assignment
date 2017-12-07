@@ -1,10 +1,11 @@
 package com.bbc.pages;
 
+import com.bbc.pages.base.BaseView;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
 /**
- * Created by oleh on 07/12/17.
+ * Implementation of Sign In Page where users enter their credentials.
  */
 public class SignInPage extends BaseView {
 
@@ -24,6 +25,11 @@ public class SignInPage extends BaseView {
         return $("#submit-button");
     }
 
+    /**
+     * Login into the application to post comment.
+     * @param email
+     * @param password
+     */
     public void signIn(String email, String password) {
         waitUntil("Email field does not appear on Sing In Page", () -> emailInput().isDisplayed());
         emailInput().sendKeys(email);

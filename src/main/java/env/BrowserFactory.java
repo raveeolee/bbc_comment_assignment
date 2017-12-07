@@ -6,6 +6,9 @@ import java.util.concurrent.TimeUnit;
 import java.util.function.Function;
 import java.util.function.Supplier;
 
+/**
+ * Basic Browser factory configuration.
+ */
 public class BrowserFactory {
 
     private Function<DesiredCapabilities, DesiredCapabilities> capabilitiesConf = Function.identity();
@@ -54,11 +57,20 @@ public class BrowserFactory {
         return this;
     }
 
+    /**
+     * Creates WebDriver with specified configurations.
+     * @return WebDriver
+     */
     public WebDriver build() {
-        DesiredCapabilities capabilities = new DesiredCapabilities();
-        capabilitiesConf.apply(capabilities);
-        WebDriver driver = driverConf.apply(null);
-        return driver;
+        try {
+            DesiredCapabilities capabilities = new DesiredCapabilities();
+            capabilitiesConf.apply(capabilities);
+            WebDriver driver = driverConf.apply(null);
+            return driver;
+        } catch (Exception e) {
+            e.printStackTrace();
+            throw e;
+        }
     }
 }
 

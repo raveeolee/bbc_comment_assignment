@@ -5,13 +5,12 @@ import cucumber.api.junit.Cucumber;
 import org.junit.runner.RunWith;
 
 /**
- * Created by oleh on 07/12/17.
+ * Cucumber junit configuration.
  */
 @RunWith(Cucumber.class)
 @CucumberOptions(
-        format = { "pretty", "html:target/cucumber" }
-        //features = "classpath:com.bbc.news",
-        //glue = "com.bbc.news.comment.steps"
-
+        format   = { "pretty", "html:target/cucumber" },
+        features = { "classpath:com.bbc.news" },
+        glue     = { "com.bbc.news.comment.steps" }
 )
 public class RunTest {}

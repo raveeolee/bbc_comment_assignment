@@ -8,7 +8,7 @@ import org.openqa.selenium.firefox.FirefoxDriver;
 import java.util.concurrent.TimeUnit;
 
 /**
- * Created by oleh on 07/12/17.
+ * Base steps logic. WebDriver configuration.
  */
 public class BaseStepDef implements En {
 
@@ -19,15 +19,21 @@ public class BaseStepDef implements En {
         After (this::killBrowser);
     }
 
+    /**
+     * Opens browser.
+     */
     protected void openBrowser() {
-        driver = new BrowserFactory(FirefoxDriver::new)
+        this.driver = new BrowserFactory(FirefoxDriver::new)
                 .setJavascript(true)
                 .setMaximizeWindowOnStart(true)
-                .setBrowserTimeout(TimeUnit.SECONDS, 20)
-                .setDriverPath("webdriver.gecko.driver", "/home/oleh/geckodriver/geckodriver") // Path to driver
+                .setBrowserTimeout(TimeUnit.SECONDS, 30)
+                .setDriverPath("webdriver.gecko.driver", System.getProperty("user.home") + "/geckodriver/geckodriver") // Path to WebDriver
                 .build();
     }
 
+    /**
+     * Closes browser.
+     */
     protected void killBrowser() {
         try {
             if (driver != null) {

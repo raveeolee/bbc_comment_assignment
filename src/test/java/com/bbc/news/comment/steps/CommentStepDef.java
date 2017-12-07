@@ -1,10 +1,12 @@
 package com.bbc.news.comment.steps;
 
 import com.bbc.news.runner.BaseStepDef;
-import com.bbc.pages.ArticlePage;
+import com.bbc.pages.ArticleCommentsSection;
+import env.RandomSentenceGenerator;
+import org.junit.Assert;
 
 /**
- * Created by oleh on 07/12/17.
+ * Comment section step definitions.
  */
 public class CommentStepDef extends BaseStepDef {
 
@@ -15,9 +17,19 @@ public class CommentStepDef extends BaseStepDef {
         });
 
         Given("^I login as audience member with email '(.*)' and password '(.*)'$", (String email, String pass) -> {
-            new ArticlePage(driver())
+            new ArticleCommentsSection(driver())
                     .openSignInPage()
                     .signIn(email, pass);
+        });
+
+        And("^I post some comment$", () -> {
+            String message = new RandomSentenceGenerator().generateSentence(10);
+            new ArticleCommentsSection(driver()).enterComment(message).postComment();
+        });
+
+        Then("^message '(.*)' appears$", (String message) -> {
+            String text = new ArticleCommentsSection(driver()).waitForCommentsMessage().getText();
+            Assert.assertEquals("Comments message is wrong", text, message);
         });
     }
 }

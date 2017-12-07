@@ -8,3 +8,5 @@ Feature: Comment
 
   Scenario: Leave comment
     When I login as audience member with email 'tdc48252@xoixa.com' and password '_v1v2v3v4v5_'
+    And I post some comment
+    Then message 'Thanks, your comment has been posted.' appears

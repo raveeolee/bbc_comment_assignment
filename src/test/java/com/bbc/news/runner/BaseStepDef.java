@@ -39,6 +39,6 @@ public class BaseStepDef implements En {
     }
 
     protected WebDriver driver() {
-        return driver;
+        return driver.switchTo().defaultContent();
     }
 }

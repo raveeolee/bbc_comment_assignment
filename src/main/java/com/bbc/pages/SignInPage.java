@@ -6,7 +6,7 @@ import org.openqa.selenium.WebElement;
 /**
  * Created by oleh on 07/12/17.
  */
-public class SignInPage extends BasePage {
+public class SignInPage extends BaseView {
 
     public SignInPage(WebDriver driver) {
         super(driver);
@@ -24,11 +24,10 @@ public class SignInPage extends BasePage {
         return $("#submit-button");
     }
 
-    public ArticlePage signIn(String email, String password) {
+    public void signIn(String email, String password) {
         waitUntil("Email field does not appear on Sing In Page", () -> emailInput().isDisplayed());
         emailInput().sendKeys(email);
         passwordInput().sendKeys(password);
         signInButton().click();
-        return new ArticlePage(driver());
     }
 }

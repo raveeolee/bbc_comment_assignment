@@ -10,7 +10,7 @@ import org.junit.runner.RunWith;
 @RunWith(Cucumber.class)
 @CucumberOptions(
         format = { "pretty", "html:target/cucumber" },
-        features = "classpath:cucumber/comment.feature"
+        features = "classpath:com.bbc.news/comment.feature"
 )
 public class RunCommentTest {
 }

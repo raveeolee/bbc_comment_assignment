@@ -1,7 +1,7 @@
 Feature: Comment
   As an audience member of http://www.bbc.co.uk/news
   I want to comment a news article
-  So I can express my opinion on material
+  So I can express my opinion on a material
 
   Scenario: Leave comment
     Given I am audience member

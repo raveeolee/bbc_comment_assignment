@@ -6,13 +6,10 @@ import java.util.concurrent.TimeUnit;
 import java.util.function.Function;
 import java.util.function.Supplier;
 
-/**
- * Created by oleh on 07/12/17.
- */
 public class BrowserFactory {
+
     private Function<DesiredCapabilities, DesiredCapabilities> capabilitiesConf = Function.identity();
     private Function<WebDriver, WebDriver> driverConf                           = Function.identity();
-    private static final ThreadLocal<WebDriver> driverHolder = new ThreadLocal<>();
 
     public BrowserFactory(Supplier<WebDriver> originalDriver) {
         driverConf = d -> originalDriver.get();
@@ -60,14 +57,8 @@ public class BrowserFactory {
     public WebDriver build() {
         DesiredCapabilities capabilities = new DesiredCapabilities();
         capabilitiesConf.apply(capabilities);
-
         WebDriver driver = driverConf.apply(null);
-        driverHolder.set(driver);
         return driver;
-    }
-
-    public static WebDriver driver() {
-        return driverHolder.get();
     }
 }
 

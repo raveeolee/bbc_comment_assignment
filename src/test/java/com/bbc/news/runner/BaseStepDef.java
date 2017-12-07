@@ -12,13 +12,15 @@ import java.util.concurrent.TimeUnit;
  */
 public class BaseStepDef implements En {
 
+    private WebDriver driver;
+
     public BaseStepDef() {
-        Before(this::createBrowser);
+        Before(this::openBrowser);
         After (this::killBrowser);
     }
 
-    protected void createBrowser() {
-        new BrowserFactory(FirefoxDriver::new)
+    protected void openBrowser() {
+        driver = new BrowserFactory(FirefoxDriver::new)
                 .setJavascript(true)
                 .setMaximizeWindowOnStart(true)
                 .setBrowserTimeout(TimeUnit.SECONDS, 20)
@@ -28,12 +30,15 @@ public class BaseStepDef implements En {
 
     protected void killBrowser() {
         try {
-            WebDriver driver = BrowserFactory.driver();
             if (driver != null) {
                 driver.quit();
             }
         } catch (Exception e) {
             System.out.println("Issue with closing driver:\n" + e);
         }
+    }
+
+    protected WebDriver driver() {
+        return driver;
     }
 }

@@ -1,4 +1,4 @@
-package com.bbc.news.runner;
+package com.bbc.news.base;
 
 import cucumber.api.java8.En;
 import env.BrowserFactory;

@@ -1,6 +1,6 @@
 package com.bbc.news.comment.steps;
 
-import com.bbc.news.runner.BaseStepDef;
+import com.bbc.news.base.BaseStepDef;
 import com.bbc.pages.comment.ArticleCommentsSection;
 import com.bbc.pages.RegisterBbcPage;
 import com.bbc.pages.SignInPage;

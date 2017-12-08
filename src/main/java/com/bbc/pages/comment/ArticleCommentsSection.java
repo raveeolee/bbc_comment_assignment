@@ -1,7 +1,6 @@
 package com.bbc.pages.comment;
 
 import com.bbc.pages.base.BaseView;
-import com.bbc.pages.components.Comment;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 

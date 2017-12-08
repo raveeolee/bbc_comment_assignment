@@ -1,4 +1,4 @@
-package com.bbc.pages.components;
+package com.bbc.pages.comment;
 
 import com.bbc.pages.base.BaseView;
 import org.openqa.selenium.SearchContext;

@@ -27,7 +27,7 @@ public class BaseStepDef implements En {
                 .setJavascript(true)
                 .setMaximizeWindowOnStart(true)
                 .setBrowserTimeout(TimeUnit.SECONDS, 30)
-                .setDriverPath("webdriver.gecko.driver", System.getProperty("user.home") + "/geckodriver/geckodriver") // Path to WebDriver
+                .setDriverPath("webdriver.gecko.driver", System.getProperty("user.home") + "/geckodriver/geckodriver") // Path to driver exec
                 .build();
     }
 
@@ -40,7 +40,9 @@ public class BaseStepDef implements En {
                 driver.quit();
             }
         } catch (Exception e) {
-            System.out.println("Issue with closing driver:\n" + e);
+            System.out.println("Issue with closing driver:\n");
+            e.printStackTrace();
+            throw e;
         }
     }
 

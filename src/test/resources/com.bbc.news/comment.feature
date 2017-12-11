@@ -10,7 +10,7 @@ Feature: Comment on the news article
     When I login as audience member with email 'tdc48252@xoixa.com' and password '_v1v2v3v4v5_'
     And I post some comment
     Then message 'Thanks, your comment has been posted.' appears
-    And comment appears in comments list with with author 'You'
+    And comment appears in comments list with author 'You'
 
   Scenario: Register account link
     When I click Register link in comments section

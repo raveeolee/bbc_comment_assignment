@@ -35,7 +35,7 @@ public class CommentStepDef extends BaseStepDef {
             Assert.assertEquals("Comments message is wrong", text, message);
         });
 
-        And("^comment appears in comments list with with author '(.*)'$", (String author) -> {
+        And("^comment appears in comments list with author '(.*)'$", (String author) -> {
             new ArticleCommentsSection(driver()).loggedState().comments().stream()
                     .filter(comment -> comment.text().getText().equals(rndCommentMessage))
                     .filter(comment -> comment.author().getText().equals(author))
